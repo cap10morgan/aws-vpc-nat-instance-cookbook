@@ -18,12 +18,12 @@ Or I suppose you could use IAM roles, but I haven't tested this.
 
 Attributes
 ----------
-* node['elastic_ip'] - You need to provision an elastic IP for your NAT instance and specify it in this attribute.
+* `node['elastic_ip']` - You need to provision an elastic IP for your NAT instance and specify it in this attribute.
 
 Optional:
 
-* node['route53']['zone_id'] - The Route 53 zone_id of the zone you'd like to add a DNS records to.
-* node['set_domain'] - The domain you'd like to add a route 53 DNS records in. Records will be [node_name].[set_domain] for the public IP and [node_name]-int.[set_domain] for the private IP.
+* `node['route53']['zone_id']` - The Route 53 zone_id of the zone you'd like to add a DNS records to.
+* `node['set_domain']` - The domain you'd like to add a route 53 DNS records in. Records will be [node_name].[set_domain] for the public IP and [node_name]-int.[set_domain] for the private IP.
 
 Usage
 -----
