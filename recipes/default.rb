@@ -45,6 +45,15 @@ iptables_ng_rule 'nat' do
   rule "-o eth0 -s #{local_cidr_block} -j MASQUERADE"
 end
 
+Array(node['nat_source_cidrs']).each do |c|
+  iptables_ng_rule "nat_{c}" do
+    table 'nat'
+    chain 'POSTROUTING'
+    ip_version 4
+    rule "-o eth0 -s #{c} -j MASQUERADE"
+  end
+end
+
 # enable IPv4 forwarding
 sysctl_param 'net.ipv4.ip_forward' do
   value 1
