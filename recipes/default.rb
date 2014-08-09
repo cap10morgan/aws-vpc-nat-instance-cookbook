@@ -46,7 +46,7 @@ iptables_ng_rule 'nat' do
 end
 
 Array(node['nat_source_cidrs']).each do |c|
-  iptables_ng_rule "nat_{c}" do
+  iptables_ng_rule "nat_#{c.gsub('/','_')}" do
     table 'nat'
     chain 'POSTROUTING'
     ip_version 4
